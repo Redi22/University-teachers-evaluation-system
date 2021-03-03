@@ -5,6 +5,7 @@
  */
 package universityteachersevaluation;
 
+import Models.Service;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -24,21 +25,28 @@ import javafx.scene.text.Font;
  * @author kk
  */
 public class SingleServiceView {
-    public Pane service(){
+    
+    private Button deleteBtn;
+    
+//    onEditFunction(){
+//        
+//    }
+    
+    public Pane service(Service service){
         Pane anchorPane = new Pane();
          anchorPane.setLayoutX(168.0);
         anchorPane.setLayoutY(90.0);
         anchorPane.setPrefHeight(200.0);
         anchorPane.setPrefWidth(500.0);
         anchorPane.setStyle("-fx-background-color: white; -fx-background-radius: 12;");
-        Button makeAdmin =  new Button();
-        makeAdmin.setLayoutX(450.0);
-        makeAdmin.setLayoutY(10.0);
-        makeAdmin.setMnemonicParsing(false);
-        makeAdmin.setPrefHeight(35.0);
-        makeAdmin.setPrefWidth(39.0);
-        makeAdmin.setStyle("-fx-background-color: #e6fcfb");
-        makeAdmin.setTextFill(javafx.scene.paint.Color.valueOf("#fff8f8"));
+        deleteBtn =  new Button();
+        deleteBtn.setLayoutX(450.0);
+        deleteBtn.setLayoutY(10.0);
+        deleteBtn.setMnemonicParsing(false);
+        deleteBtn.setPrefHeight(35.0);
+        deleteBtn.setPrefWidth(39.0);
+        deleteBtn.setStyle("-fx-background-color: #e6fcfb");
+        deleteBtn.setTextFill(javafx.scene.paint.Color.valueOf("#fff8f8"));
 
         Label label3 = new Label(); 
         label3.setLayoutX(14.0);
@@ -46,7 +54,7 @@ public class SingleServiceView {
         label3.setPrefHeight(24.0);
         label3.setPrefWidth(410.0);
         label3.setStyle("-fx-background-color: white; -fx-font-size: 25;");
-        label3.setText("Service Name");
+        label3.setText(service.getName());
         label3.setFont(new Font(16.0));
 
         FontAwesomeIcon fontAwesomeIcon6 = new FontAwesomeIcon();
@@ -61,18 +69,18 @@ public class SingleServiceView {
 //        label4.setPrefHeight(200.0);
         label4.setPrefWidth(450.0);
         label4.setStyle("-fx-background-color: white;");
-        label4.setText("description description description description description description description description description description description description description description description description description description description ");
+        label4.setText(service.getDescription());
         label4.setWrapText(true);
         label4.setFont(new Font(14.0));
 
-        Button makeAdmin1 = new Button();
-        makeAdmin1.setLayoutX(400.0);
-        makeAdmin1.setLayoutY(9.0);
-        makeAdmin1.setMnemonicParsing(false);
-        makeAdmin1.setPrefHeight(35.0);
-        makeAdmin1.setPrefWidth(39.0);
-        makeAdmin1.setStyle("-fx-background-color: #e6fcfb;");
-        makeAdmin1.setTextFill(javafx.scene.paint.Color.valueOf("#fff8f8"));
+        Button editBtn = new Button();
+        editBtn.setLayoutX(400.0); 
+        editBtn.setLayoutY(9.0);
+        editBtn.setMnemonicParsing(false);
+        editBtn.setPrefHeight(35.0);
+        editBtn.setPrefWidth(39.0);
+        editBtn.setStyle("-fx-background-color: #e6fcfb;");
+        editBtn.setTextFill(javafx.scene.paint.Color.valueOf("#fff8f8"));
 
         Button makeAdmin3 = new Button();
         makeAdmin3.setText("Details");
@@ -111,18 +119,18 @@ public class SingleServiceView {
         fontAwesomeIcon7.setSize("2em");
         fontAwesomeIcon7.setIconName("EDIT");
         fontAwesomeIcon7.setLayoutY(38.0);
-        makeAdmin.setGraphic(fontAwesomeIcon6);
-        makeAdmin1.setGraphic(fontAwesomeIcon7);
+        deleteBtn.setGraphic(fontAwesomeIcon6);
+        editBtn.setGraphic(fontAwesomeIcon7);
         
          DropShadow dropShadow =  new DropShadow();
          dropShadow.setColor(Color.valueOf("#b2d8d8"));
 
          anchorPane.setEffect(dropShadow);
         
-        anchorPane.getChildren().add(makeAdmin);
+        anchorPane.getChildren().add(deleteBtn);
         anchorPane.getChildren().add(label3);
         anchorPane.getChildren().add(label4);
-        anchorPane.getChildren().addAll(makeAdmin1);
+        anchorPane.getChildren().addAll(editBtn);
         anchorPane.getChildren().addAll(makeAdmin3);
         return anchorPane;
 

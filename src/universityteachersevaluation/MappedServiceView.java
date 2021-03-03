@@ -162,13 +162,13 @@ public class MappedServiceView {
         mapsContainer.setLayoutY(100);
         mapsContainer.setPadding(new Insets(20));
         for(int i=0; i<9; i++){
-        HBox some = singleView.mappedServiceView();
-        some.setAlignment(Pos.CENTER);
-        some.setLayoutX(200);
-        some.setLayoutY(80);
-        Separator border =  new Separator();
-        border.setOrientation(Orientation.HORIZONTAL);
-        mapsContainer.getChildren().addAll(some , border);
+            HBox some = singleView.mappedServiceView();
+            some.setAlignment(Pos.CENTER);
+            some.setLayoutX(200);
+            some.setLayoutY(80);
+            Separator border =  new Separator();
+            border.setOrientation(Orientation.HORIZONTAL);
+            mapsContainer.getChildren().addAll(some , border);
         }
         
         HBox hBox0 = new HBox();

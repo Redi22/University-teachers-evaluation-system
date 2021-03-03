@@ -6,6 +6,8 @@
 package universityteachersevaluation;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -49,8 +51,13 @@ public class SingleTeacherTaskView {
         fontAwesomeIcon6.setSize("1.5em");
         fontAwesomeIcon6.setIconName("CHECK");
         fontAwesomeIcon6.setFill(Color.WHITE);
-        
-        
+//        doneBtn.setOnAction(
+//                new  EventHandler<ActionEvent>() {
+//                    public void handle(ActionEvent e) {
+//                        
+//                    }
+//                });
+//        
        
         doneBtn.setGraphic(fontAwesomeIcon6);
          

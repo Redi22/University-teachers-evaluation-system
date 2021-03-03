@@ -53,7 +53,7 @@ public class TeachersView  {
         fullNameField.setPrefHeight(34.0);
         fullNameField.setPrefWidth(200.0);
         fullNameField.setPromptText("Full Name");
-
+        
         ComboBox levelOfEd = new ComboBox();
         levelOfEd.getItems().addAll("Masters" , "PHD");
         levelOfEd.setLayoutX(37.0);

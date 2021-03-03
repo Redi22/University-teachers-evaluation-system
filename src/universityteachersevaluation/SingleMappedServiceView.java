@@ -19,6 +19,7 @@ import javafx.scene.text.Font;
  * @author kk
  */
 public class SingleMappedServiceView {
+    
     public HBox mappedServiceView(){
        HBox pane =  new HBox();
        pane.setSpacing(30);

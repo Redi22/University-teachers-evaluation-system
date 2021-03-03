@@ -93,17 +93,19 @@ public class database {
         }
     }
     
-    static void select(Connection conn)
+    static void login(Connection conn , String givenEmail , String givenPass)
     {
         try{
-            String sql = "SELECT * FROM some";
+            String sql = "SELECT * FROM users";
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             
-            System.out.println("ID\tName\tAge\tDept");
-            System.out.println("--\t----\t---\t----");
             while(rs.next()){
-                System.out.println(rs.getString(1)+"\t"+rs.getString(2)+"\t"+ rs.getString(3)+"\t"+ rs.getString(4));
+                String email = rs.getString(1);
+                String password = rs.getString(2);
+                if(email == givenEmail && password == givenPass ){
+                    
+                }
             }
             conn.close();
         }

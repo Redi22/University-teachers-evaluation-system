@@ -5,6 +5,7 @@
  */
 package universityteachersevaluation;
 
+import Models.Service;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -181,12 +182,16 @@ public class ServicesView {
         serviceHolder.setLayoutX(50);
         serviceHolder.setLayoutY(70);
         serviceHolder.setSpacing(20);
+        
+        
         for(int i=0; i < 4 ; i++){
+            
             HBox serviceHolderH = new HBox();
             serviceHolderH.setSpacing(30);
             for(int j=0; j < 2 ; j++){
+                Service service =  new Service(1, "name here" , 32.0 , "lorem ipsum something something goes here as a description" ,2 );
                 SingleServiceView singleService =  new SingleServiceView();
-                 serviceHolderH.getChildren().add(singleService.service());
+                 serviceHolderH.getChildren().add(singleService.service(service));
             }
             serviceHolder.getChildren().add(serviceHolderH);
         

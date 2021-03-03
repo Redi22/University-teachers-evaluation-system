@@ -5,7 +5,9 @@
  */
 package universityteachersevaluation;
 
+
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -14,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
@@ -22,6 +25,12 @@ import javafx.scene.paint.Color;
  * @author kk
  */
 public class NavDrawer {
+      private  Button navBtn1;
+      private  Button navBtn2;
+      private  Button navBtn3;
+      private  Button navBtn4;
+      private  Button navBtn5;
+
     public VBox navDrawer(){
         
     
@@ -45,11 +54,11 @@ public class NavDrawer {
     navDrawer.setStyle("-fx-background-color: #008381; ");
     navDrawer.setPadding(new Insets(15, 15, 15, 15));
     navDrawer.setLayoutY(50.0);
-    Button navBtn1 = new Button();
-    Button navBtn2 = new Button();
-    Button navBtn3 = new Button();
-    Button navBtn4 = new Button();
-    Button navBtn5 = new Button();
+     navBtn1 = new Button();
+     navBtn2 = new Button();
+    navBtn3 = new Button();
+     navBtn4 = new Button();
+     navBtn5 = new Button();
     navBtn1.setTextFill(Color.WHITE);
     navDrawer.setPrefHeight(700.0);
         navDrawer.setPrefWidth(158.0);
@@ -59,7 +68,7 @@ public class NavDrawer {
         navBtn2.setMnemonicParsing(false);
         navBtn2.setPrefWidth(150.0);
         navBtn2.setPrefHeight(33.0);
-        navBtn2.setStyle("-fx-background-color: #006666;");
+        navBtn2.setStyle("-fx-background-color: teal;");
         navBtn2.setText("Services");
         navBtn2.setTextFill(Color.valueOf("#fff8f8"));
         navBtn2.setGraphic(fontAwesomeIcon2);
@@ -112,6 +121,8 @@ public class NavDrawer {
                             somePane.setLayoutY(53);
                             somePane.setPrefHeight(650);
                             somePane.setPrefWidth(1350); 
+                            navDrawerClass.colorChanger();
+                            navDrawerClass.navBtn1.setStyle("-fx-background-color: #006666");
                             Pane pane = new Pane();
                             pane.getChildren().addAll(appBar , navDrawer ,somePane );
                             Scene s = new Scene(pane, 1350 , 700);
@@ -133,6 +144,8 @@ public class NavDrawer {
                             somePane.setLayoutY(53);
                             somePane.setPrefHeight(650);
                             somePane.setPrefWidth(1350); 
+                            navDrawerClass.colorChanger();
+                            navDrawerClass.navBtn2.setStyle("-fx-background-color: #006666");
                             Pane pane = new Pane();
                             pane.getChildren().addAll(appBar , navDrawer ,somePane );
                             Scene s = new Scene(pane, 1350 , 700);
@@ -150,11 +163,13 @@ public class NavDrawer {
                             HBox appBar = appBarClass.appBar();
                             VBox navDrawer = navDrawerClass.navDrawer();
                             TeacherEvaluationView tv = new TeacherEvaluationView();
-                            ScrollPane somePane = tv.teacherEvaluationView();
+                            StackPane somePane = tv.teacherEvaluationView();
                             somePane.setLayoutX(160);
                             somePane.setLayoutY(53);
                             somePane.setPrefHeight(650);
                             somePane.setPrefWidth(1350); 
+                            navDrawerClass.colorChanger();
+                            navDrawerClass.navBtn3.setStyle("-fx-background-color: #006666");
                             Pane pane = new Pane();
                             pane.getChildren().addAll(appBar , navDrawer ,somePane );
                             Scene s = new Scene(pane, 1350 , 700);
@@ -164,4 +179,14 @@ public class NavDrawer {
     navDrawer.getChildren().addAll(navBtn1, navBtn2, navBtn3, navBtn4 , navBtn5);
     return navDrawer;
     }
+    
+    public void colorChanger(){
+        navBtn1.setStyle("-fx-background-color: teal");
+        navBtn2.setStyle("-fx-background-color: teal");
+        navBtn3.setStyle("-fx-background-color: teal");
+        navBtn4.setStyle("-fx-background-color: teal");
+        navBtn5.setStyle("-fx-background-color: teal");
+    }
+    
+  
 }
