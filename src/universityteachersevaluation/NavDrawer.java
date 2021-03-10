@@ -14,6 +14,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -24,8 +25,14 @@ import javafx.scene.paint.Color;
  *
  * @author kk
  */
+
+
+//Navigation drawer component
 public class NavDrawer {
       private  Button navBtn1;
+
+    public NavDrawer() {
+    }
       private  Button navBtn2;
       private  Button navBtn3;
       private  Button navBtn4;
@@ -33,7 +40,7 @@ public class NavDrawer {
 
     public VBox navDrawer(){
         
-    
+    //icons for the buttons
     FontAwesomeIcon fontAwesomeIcon1 = new FontAwesomeIcon();
     fontAwesomeIcon1.setIconName("USERS");
     fontAwesomeIcon1.setFill(Color.WHITE);
@@ -44,7 +51,7 @@ public class NavDrawer {
     fontAwesomeIcon3.setIconName("USERS");
     fontAwesomeIcon3.setFill(Color.WHITE);
     FontAwesomeIcon fontAwesomeIcon4 = new FontAwesomeIcon();
-    fontAwesomeIcon4.setIconName("USERS");
+    fontAwesomeIcon4.setIconName("COG");
     fontAwesomeIcon4.setFill(Color.WHITE);
     FontAwesomeIcon fontAwesomeIcon5 = new FontAwesomeIcon();
     fontAwesomeIcon5.setIconName("USERS");
@@ -85,7 +92,7 @@ public class NavDrawer {
         navBtn4.setPrefWidth(150.0);        
         navBtn4.setPrefHeight(33.0);
         navBtn4.setStyle("-fx-background-color: teal;");
-        navBtn4.setText("Student");
+        navBtn4.setText("Setting");
         navBtn4.setTextFill(Color.valueOf("#fff8f8"));
         navBtn4.setGraphic(fontAwesomeIcon4);
         
@@ -110,13 +117,12 @@ public class NavDrawer {
                 new  EventHandler<ActionEvent>() {
                         public void handle(ActionEvent e) {
                             SceneChanger sc =  new SceneChanger();
-                           
                             NavDrawer navDrawerClass = new NavDrawer();
                             AppBar appBarClass = new AppBar();
                             HBox appBar = appBarClass.appBar();
                             VBox navDrawer = navDrawerClass.navDrawer();
                             TeachersView tv = new TeachersView();
-                            Pane somePane = tv.teacherView();
+                            StackPane somePane = tv.teacherView();
                             somePane.setLayoutX(160);
                             somePane.setLayoutY(53);
                             somePane.setPrefHeight(650);
@@ -162,24 +168,69 @@ public class NavDrawer {
                             AppBar appBarClass = new AppBar();
                             HBox appBar = appBarClass.appBar();
                             VBox navDrawer = navDrawerClass.navDrawer();
-                            TeacherEvaluationView tv = new TeacherEvaluationView();
-                            StackPane somePane = tv.teacherEvaluationView();
-                            somePane.setLayoutX(160);
-                            somePane.setLayoutY(53);
+                            Pane pane = new Pane();
+
+                            if(!UniversityTeachersEvaluation.currentUser.getUser().isAdmin()){
+        
+                                TeacherEvaluationView tv = new TeacherEvaluationView();
+                                StackPane somePane = tv.teacherEvaluationView();
+                                somePane.setLayoutX(160);
+                                somePane.setLayoutY(53);
+                                somePane.setPrefHeight(650);
+                                somePane.setPrefWidth(1350); 
+                                navDrawerClass.colorChanger();
+                                navDrawerClass.navBtn3.setStyle("-fx-background-color: #006666");
+                                pane.getChildren().addAll(appBar , navDrawer ,somePane );
+                                
+                            }else{
+                                AdminEvalView tv = new AdminEvalView();
+                                StackPane somePane = tv.teacherEvaluationView();
+                                somePane.setLayoutX(160);
+                                somePane.setLayoutY(53);
+                                somePane.setPrefHeight(650);
+                                somePane.setPrefWidth(1350); 
+                                navDrawerClass.colorChanger();
+                                navDrawerClass.navBtn3.setStyle("-fx-background-color: #006666");
+                                pane.getChildren().addAll(appBar , navDrawer ,somePane );
+                                
+                            }
+                            Scene s = new Scene(pane, 1350 , 700);
+                            sc.changeScene(s);
+                        }
+                });
+            navBtn4.setOnAction(
+                new  EventHandler<ActionEvent>() {
+                        public void handle(ActionEvent e) {
+                            SceneChanger sc =  new SceneChanger();
+                            NavDrawer navDrawerClass = new NavDrawer();
+                            AppBar appBarClass = new AppBar();
+                            HBox appBar = appBarClass.appBar();
+                            VBox navDrawer = navDrawerClass.navDrawer();
+                            SettingView tv = new SettingView();
+//                            User u = new User();
+                            AnchorPane somePane = tv.settingsView();
+                            somePane.setLayoutX(300);
+                            somePane.setLayoutY(100);
                             somePane.setPrefHeight(650);
                             somePane.setPrefWidth(1350); 
                             navDrawerClass.colorChanger();
-                            navDrawerClass.navBtn3.setStyle("-fx-background-color: #006666");
+                            navDrawerClass.navBtn1.setStyle("-fx-background-color: #006666");
                             Pane pane = new Pane();
                             pane.getChildren().addAll(appBar , navDrawer ,somePane );
                             Scene s = new Scene(pane, 1350 , 700);
                             sc.changeScene(s);
                         }
                 });
-    navDrawer.getChildren().addAll(navBtn1, navBtn2, navBtn3, navBtn4 , navBtn5);
+            if(UniversityTeachersEvaluation.currentUser.getUser() != null)
+            if(UniversityTeachersEvaluation.currentUser.getUser().isAdmin()){
+                    navDrawer.getChildren().addAll(navBtn1);
+                }
+    navDrawer.getChildren().addAll(navBtn2, navBtn3, navBtn4 );
+    
     return navDrawer;
     }
     
+    //styling 
     public void colorChanger(){
         navBtn1.setStyle("-fx-background-color: teal");
         navBtn2.setStyle("-fx-background-color: teal");

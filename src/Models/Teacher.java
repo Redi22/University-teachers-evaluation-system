@@ -5,11 +5,15 @@
  */
 package Models;
 
+import java.io.Serializable;
+
 /**
  *
  * @author kk
  */
-public class Teacher {
+
+//model teacher class
+public class Teacher implements Serializable {
 
     public Teacher(int id, String fullName, String email, String phone, String gender, int levelId) {
         this.id = id;
@@ -19,6 +23,14 @@ public class Teacher {
         this.gender = gender;
         this.levelId = levelId;
     }
+    public Teacher(String fullName, String email, String phone, String gender, int levelId) {
+        this.fullName = fullName;
+        this.email = email;
+        this.phone = phone;
+        this.gender = gender;
+        this.levelId = levelId;
+    }
+
 
     public int getId() {
         return id;
@@ -71,7 +83,26 @@ public class Teacher {
     private String fullName;
     private String email;
     private String phone;
+
+    public Teacher(int id, String fullName, String email, String phone, String gender, int levelId, String levelName) {
+        this.id = id;
+        this.fullName = fullName;
+        this.email = email;
+        this.phone = phone;
+        this.gender = gender;
+        this.levelId = levelId;
+        this.levelName = levelName;
+    }
+
+    public String getLevelName() {
+        return levelName;
+    }
+
+    public void setLevelName(String levelName) {
+        this.levelName = levelName;
+    }
     private String gender;
     private int levelId;
+    private String levelName;
     
 }

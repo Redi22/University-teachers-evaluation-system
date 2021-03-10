@@ -16,6 +16,8 @@ import javafx.scene.Scene;
  *
  * @author kk
  */
+
+//scene changer helper class 
 public class SceneChanger {
      public void changeScene(Scene s){
                 UniversityTeachersEvaluation.stage.setScene(s);

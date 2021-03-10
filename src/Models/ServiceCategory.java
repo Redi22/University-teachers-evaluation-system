@@ -5,15 +5,23 @@
  */
 package Models;
 
+import java.io.Serializable;
+
 /**
  *
  * @author kk
  */
-public class ServiceCategory {
 
-    public ServiceCategory(String name, int id, String description) {
+//service_category model
+public class ServiceCategory implements Serializable{
+
+    public ServiceCategory( int id,String name, String description) {
         this.name = name;
         this.id = id;
+        this.description = description;
+    }
+     public ServiceCategory(String name, String description) {
+        this.name = name;
         this.description = description;
     }
     private String name;

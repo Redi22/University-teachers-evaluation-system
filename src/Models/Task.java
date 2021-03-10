@@ -5,11 +5,15 @@
  */
 package Models;
 
+import java.io.Serializable;
+
 /**
  *
  * @author kk
  */
-public class Task {
+
+//model class for tasks assigned to teachers
+public class Task implements Serializable{
 
     public int getId() {
         return id;
@@ -20,11 +24,11 @@ public class Task {
     }
 
     public String getTitle() {
-        return title;
+        return name;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.name = title;
     }
 
     public String getDescription() {
@@ -68,19 +72,56 @@ public class Task {
     }
     int id;
 
-    public Task(int id, String title, String description, boolean complete, int serviceId, int teacherId, double percentile) {
+    public Task(int id, String title, String description, boolean complete, int serviceId, int teacherId, double percentile , String levelName) {
         this.id = id;
-        this.title = title;
+        this.name = title;
+        this.description = description;
+        this.complete = complete;
+        this.serviceId = serviceId;
+        this.teacherId = teacherId;
+        this.percentile = percentile;
+        this.levelName = levelName;
+
+    }
+    public Task(String title, String description, boolean complete, int serviceId, int teacherId, double percentile , String levelName) {
+        this.name = title;
+        this.description = description;
+        this.complete = complete;
+        this.serviceId = serviceId;
+        this.teacherId = teacherId;
+        this.percentile = percentile;
+        this.levelName = levelName;
+    }
+    private String name;
+    private String description;
+
+    public Task(String name, String description, boolean complete, int serviceId, int teacherId, double percentile) {
+        this.name = name;
         this.description = description;
         this.complete = complete;
         this.serviceId = serviceId;
         this.teacherId = teacherId;
         this.percentile = percentile;
     }
-    private String title;
-    private String description;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLevelName() {
+        return levelName;
+    }
+
+    public void setLevelName(String levelName) {
+        this.levelName = levelName;
+    }
     private boolean complete;
     private int serviceId;
     private int teacherId;
     private double percentile;
+    private String levelName;
 }

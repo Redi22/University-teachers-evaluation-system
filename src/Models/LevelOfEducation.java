@@ -5,17 +5,25 @@
  */
 package Models;
 
+import java.io.Serializable;
+
 /**
  *
  * @author kk
  */
-public class LevelOfEducation {
+
+//class to indicate level of education within the university 
+public class LevelOfEducation implements Serializable {
     private String name;
     private int id;
 
-    public LevelOfEducation(String name, int id) {
+
+    public LevelOfEducation(  int id ,String name) {
         this.name = name;
         this.id = id;
+    }
+    public LevelOfEducation(String name) {
+        this.name = name;
     }
 
     public String getName() {

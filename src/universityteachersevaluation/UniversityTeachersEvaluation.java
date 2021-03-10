@@ -5,13 +5,21 @@
  */
 package universityteachersevaluation;
 
+import Models.CurrentUser;
+import Models.Teacher;
+import Models.User;
+
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.InetAddress;
+import java.net.MalformedURLException;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.Scene;
@@ -45,49 +53,26 @@ import javafx.scene.text.Font;
  */
 public class UniversityTeachersEvaluation extends Application{
     static Stage stage;
-    private TextArea ta;
-//    private boolean isServer = true;
     
-//    private NetworkConnection netConnection  = isServer ? createServer() : createClient();
-    
-//    @Override 
-//    public void init() throws Exception{
-//        netConnection.startConnection();
-//    }
-//    
-//    @Override
-//    public void stop() throws Exception{
-//        netConnection.closeConnection();
-//    }
-//    
+    static CurrentUser currentUser = new CurrentUser();
+
     
  @Override // Override the start method in the Application class
  public void start(Stage stage) {
      
      this.stage = stage;
      boolean admin = true;
-        Pane pane =  new Pane();
+     Pane pane =  new Pane();
         
-        
-
-    AppBar appBarClass =  new AppBar();
-    HBox appBar = appBarClass.appBar();
-        pane.setStyle("-fx-background-color: #e6f2f0");
-        pane.getChildren().add(appBar);
-        NavDrawer navBarClass = new NavDrawer();
-        VBox navDrawer = navBarClass.navDrawer();
-        pane.getChildren().add(navDrawer); 
-        
-        
+     pane.setStyle("-fx-background-color: #e6f2f0");
+  
      
-    ServicesView teachers = new ServicesView();
-    ScrollPane somePane = teachers.servicesView();
-//    somePane.setStyle("-fx-background-color: #e6f2f0");
-//    somePane.setPrefWidth(1300);
+    LoginView loginView = new LoginView();
+    Pane somePane = loginView.LoginView();
+
     ScrollPane scrollView = new ScrollPane();
-    somePane.setLayoutX(158);
-    somePane.setLayoutY(51);
-//    somePane.setContent(somePane);
+    somePane.setLayoutX(500);
+    somePane.setLayoutY(100);
         
 //       
     pane.getChildren().add(somePane);
@@ -95,58 +80,11 @@ public class UniversityTeachersEvaluation extends Application{
     stage.setScene(scene); // Place the scene in the stage
     stage.show(); // Display the stage
  }
-// 
-// 
-// @Override 
-// public void stop(){
-//     socket.close();
-//
-// }
-// 
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        String host = "127.0.0.1";
-//        try
-//{
-////Convert the URL string into an INetAddress
-////object…
-//InetAddress theAddress =
-//InetAddress.getByName(host);
-//Socket socket;
-//
-//
-//try
-//{
-////Attempt to establish a socket on
-////port i…
-//    int i = 1;
-//socket = new Socket(host, i);
-//
-//ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-//Serializable data = "some";
-//out.writeObject(data);
-////If no IOException thrown, there must
-////be a service running on the port…
-//socket.setTcpNoDelay(true);
-//System.out.println("connection made in port " + i + " host " + host );
-//}
-//catch (IOException ioEx)
-//{
-//    System.out.println("io exception");
-//}// No server on this port
-//
-//}
-//catch (UnknownHostException uhEx)
-//{
-//    System.out.println("unknown host exception");
-//
-//}
         launch(args);
     }
-    
-    
-     
-    
 }
